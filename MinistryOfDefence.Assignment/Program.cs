@@ -7,12 +7,8 @@ using MinistryOfDefence.Assignment.ServicesConfig;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<ShoppingDbContext>(
-    options =>
-    {
-        options.UseSqlServer(builder.Configuration["ConnectionString:ShoppingDb"]);
-    });
 
+builder.Services.RegisterDb(builder.Configuration);
 builder.Services.RegisterService();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -35,5 +31,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors(x =>
+    x.AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin()
+);
 
 app.Run();
