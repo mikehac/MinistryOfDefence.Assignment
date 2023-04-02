@@ -1,0 +1,10 @@
+section{
+    direction: rtl;    
+}
+.mainWrapper{
+    display: flex;
+    margin: 5px auto;
+}
+.mainWrapper div{
+    padding: 10px;
+}

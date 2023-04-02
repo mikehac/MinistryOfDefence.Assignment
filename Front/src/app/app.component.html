@@ -1,0 +1,17 @@
+<h3>רשימת קניות</h3>
+<section>
+  <div class="mainWrapper">
+    <div>
+      <input type="text" placeholder="הוסף מוצר חדש"/>
+    </div>
+    <div>
+      <select>
+        <option *ngFor="let category of categoryList" value="category.id" >{{category.nameHeb}}</option>
+      </select>
+    </div>
+    <div>
+      <button>הוסף</button>
+    </div>
+  </div>
+</section>
+<hr>
