@@ -8,8 +8,14 @@
           type="text"
           placeholder="הוסף מוצר חדש"
           [(ngModel)]="newItemName"
+          required
           class="form-control form-select-sm"
         />
+        <div *ngIf="newItemName === ''" class="alert">
+          <div *ngIf="newItemName === ''" style="text-align: right">
+            שדה חובה
+          </div>
+        </div>
       </div>
       <div>
         <select
@@ -21,9 +27,18 @@
             {{ category.nameHeb }}
           </option>
         </select>
+        <div *ngIf="selectedCategoryId === 0" class="alert">
+          <div *ngIf="selectedCategoryId === 0" style="text-align: right">
+            יש לבחור קטגוריה
+          </div>
+        </div>
       </div>
       <div>
-        <button (click)="onClick()" class="btn btn-outline-info btn-sm">
+        <button
+          (click)="onClick()"
+          class="btn btn-outline-info btn-sm"
+          [disabled]="newItemName === '' && selectedCategoryId === 0"
+        >
           הוסף
         </button>
       </div>
