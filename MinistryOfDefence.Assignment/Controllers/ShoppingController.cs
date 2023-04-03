@@ -40,8 +40,15 @@ namespace MinistryOfDefence.Assignment.Controllers
             return Ok(items);
         }
 
+        [HttpGet("GetAllItems")]
+        public async Task<IActionResult> GetItemsAndCategories()
+        {
+            var allItems = await _shoppingService.GetItemsAndCategories();
+            return Ok(allItems.Categories.Values);
+        }
+
         [HttpPost]
-        public IActionResult Post([FromBody] ItemDTO item)
+        public async Task<IActionResult> Post([FromBody] ItemDTO item)
         {
             if (item == null)
             {
@@ -56,8 +63,8 @@ namespace MinistryOfDefence.Assignment.Controllers
                 return BadRequest("CategoryId must be greater than zero");
             }
 
-            _shoppingService.AddNewItem(item);
-            return Created("/Shopping", item);
+            var result = await _shoppingService.AddNewItem(item);
+            return Created("/Shopping", result);
         }
     }
 }

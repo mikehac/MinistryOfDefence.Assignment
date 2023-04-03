@@ -6,6 +6,7 @@ namespace MinistryOfDefence.Assignment.Services
     {
         IEnumerable<CategoryDTO> GetCategories();
         IEnumerable<ItemDTO> GetItemsByCategory(int categoryId);
-        Task AddNewItem(ItemDTO itemDTO);
+        Task<ItemDTO> AddNewItem(ItemDTO itemDTO);
+        Task<ResponseDTO> GetItemsAndCategories();
     }
 }
