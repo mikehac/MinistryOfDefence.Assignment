@@ -2,6 +2,19 @@ section {
   direction: rtl;
   text-align: center;
 }
+.title {
+  font-weight: bold;
+  font-size: 35px;
+  height: 60px;
+  line-height: 60px;
+  background-color: #e9ecef;
+}
+.totalTxt {
+  color: #8749cc;
+  text-align: left;
+  font-size: 20px;
+  margin-top: 20px;
+}
 .mainWrapper {
   display: flex;
   margin: 5px auto;
