@@ -37,3 +37,7 @@ section {
 .singleCategoryWrapper {
   margin: 5px;
 }
+
+.alert {
+  color: red;
+}
