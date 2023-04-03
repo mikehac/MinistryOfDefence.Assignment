@@ -1,17 +1,28 @@
 <h3>רשימת קניות</h3>
 <section>
-  <div class="mainWrapper">
-    <div>
-      <input type="text" placeholder="הוסף מוצר חדש"/>
+  <section>
+    <div class="mainWrapper">
+      <div>
+        <input type="text" placeholder="הוסף מוצר חדש" [(ngModel)]="newItem" />
+      </div>
+      <div>
+        <select [(ngModel)]="selectedCategoryId">
+          <option value="0">קטגוריה</option>
+          <option *ngFor="let category of categoryList" [ngValue]="category.id">
+            {{ category.nameHeb }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button (click)="onClick()">הוסף</button>
+      </div>
     </div>
-    <div>
-      <select>
-        <option *ngFor="let category of categoryList" value="category.id" >{{category.nameHeb}}</option>
-      </select>
-    </div>
-    <div>
-      <button>הוסף</button>
+  </section>
+  <hr />
+  <div class="description">יש לאסוף מוצרים אלו במחלקות המתאימות</div>
+  <div class="categoryListContainer">
+    <div *ngFor="let ci of categoriesWithItem" class="">
+      <category-items [category]="ci"></category-items>
     </div>
   </div>
 </section>
-<hr>

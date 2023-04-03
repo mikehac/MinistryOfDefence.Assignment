@@ -1,4 +1,5 @@
-<p>ירקות ופירות - 2 מוצרים</p>
-<hr>
-<div>ענבים</div>
-<div>עגבניות</div>
+<div class="categoryContainer">
+  <p>{{ category.nameHeb }} - 2 מוצרים</p>
+  <hr />
+  <div *ngFor="let item of category.items">{{ item.name }}</div>
+</div>

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { category } from '../shopping.service';
 
 @Component({
-  selector: 'app-category-items',
+  selector: 'category-items',
   templateUrl: './category-items.component.html',
-  styleUrls: ['./category-items.component.css']
+  styleUrls: ['./category-items.component.css'],
 })
 export class CategoryItemsComponent {
-
+  @Input() category: category;
 }
