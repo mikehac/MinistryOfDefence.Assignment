@@ -1,5 +1,5 @@
 <div class="categoryContainer">
-  <p>{{ category.nameHeb }} - 2 מוצרים</p>
+  <p>{{ category.nameHeb }} - {{ category.items.length }} מוצרים</p>
   <hr />
   <div *ngFor="let item of category.items">{{ item.name }}</div>
 </div>
