@@ -19,19 +19,30 @@ namespace MinistryOfDefence.Assignment.Services
 
         public async Task<ItemDTO> AddNewItem(ItemDTO itemDTO)
         {
-            ResponseDTO response = new ResponseDTO();
-            Item newItem = _mapper.Map<Item>(itemDTO);
-            _dbContext.Items.Add(newItem);
             try
             {
+                Item newItem;
+                var item = await _dbContext.Items.FirstOrDefaultAsync(x => x.Name.ToLower().Equals(itemDTO.Name.ToLower()) && x.CategoryId.Equals(itemDTO.CategoryId));
+                if(item == null)
+                {
+                    newItem = _mapper.Map<Item>(itemDTO);
+                    _dbContext.Items.Add(newItem);
+                }
+                else
+                {
+                    item.Amount++;
+                    newItem = item;
+                }
                 await _dbContext.SaveChangesAsync();
+
+                return _mapper.Map<ItemDTO>(newItem);
             }
             catch (Exception ex)
             {
                 //TODO:Logging the exception
+                return null;
             }
 
-            return _mapper.Map<ItemDTO>(newItem);
         }
 
         public async Task<ResponseDTO> GetItemsAndCategories()
