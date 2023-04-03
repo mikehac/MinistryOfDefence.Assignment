@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
       id: 0,
       name: this.newItemName,
       categoryId: this.selectedCategoryId,
+      amount: 1,
     };
     // console.log(newItem);
     this.service.addNewItem(newItem).subscribe((response) => {

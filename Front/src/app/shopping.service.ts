@@ -38,4 +38,5 @@ export interface item {
   id: number;
   name: string;
   categoryId: number;
+  amount: number;
 }

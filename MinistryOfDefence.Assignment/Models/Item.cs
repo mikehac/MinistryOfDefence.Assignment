@@ -10,4 +10,6 @@ public partial class Item
     public string Name { get; set; } = null!;
 
     public int CategoryId { get; set; }
+
+    public int Amount { get; set; }
 }

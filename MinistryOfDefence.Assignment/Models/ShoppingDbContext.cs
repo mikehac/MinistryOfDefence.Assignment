@@ -43,6 +43,9 @@ public partial class ShoppingDbContext : DbContext
             entity.ToTable("Item");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Amount)
+                .HasDefaultValueSql("((1))")
+                .HasColumnName("amount");
             entity.Property(e => e.CategoryId).HasColumnName("categoryId");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)

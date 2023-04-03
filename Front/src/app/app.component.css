@@ -18,6 +18,7 @@ section {
 .mainWrapper {
   display: flex;
   margin: 5px auto;
+  justify-content: center;
 }
 .mainWrapper div {
   padding: 10px;
@@ -31,4 +32,8 @@ section {
 .categoryListContainer {
   display: flex;
   margin: 10px auto;
+  justify-content: center;
+}
+.singleCategoryWrapper {
+  margin: 5px;
 }
