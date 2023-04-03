@@ -3,7 +3,11 @@
   <section>
     <div class="mainWrapper">
       <div>
-        <input type="text" placeholder="הוסף מוצר חדש" [(ngModel)]="newItem" />
+        <input
+          type="text"
+          placeholder="הוסף מוצר חדש"
+          [(ngModel)]="newItemName"
+        />
       </div>
       <div>
         <select [(ngModel)]="selectedCategoryId">

@@ -9,7 +9,7 @@ import { ShoppingService, category } from './shopping.service';
 export class AppComponent implements OnInit {
   categoryList: category[] = [];
   categoriesWithItem: category[] = [];
-  newItem: string = '';
+  newItemName: string = '';
   selectedCategoryId: number = 0;
   constructor(private service: ShoppingService) {}
   ngOnInit(): void {
@@ -34,12 +34,14 @@ export class AppComponent implements OnInit {
   private addNewItem() {
     var newItem = {
       id: 0,
-      name: this.newItem,
+      name: this.newItemName,
       categoryId: this.selectedCategoryId,
     };
     // console.log(newItem);
     this.service.addNewItem(newItem).subscribe((response) => {
       this.getAllItems();
+      this.newItemName = '';
+      this.selectedCategoryId = 0;
     });
   }
 
