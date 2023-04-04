@@ -1,7 +1,11 @@
 <section>
-  <div class="title">רשימת קניות</div>
+  <div class="title">
+    <div>רשימת קניות</div>
+  </div>
   <section>
-    <div class="totalTxt">סה"כ 6 מוצרים</div>
+    <div class="totalTxt">
+      <div *mobxAutorun>סה"כ: {{ state.total }} מוצרים</div>
+    </div>
     <div class="mainWrapper">
       <div>
         <input

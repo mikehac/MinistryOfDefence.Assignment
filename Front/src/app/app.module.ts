@@ -7,10 +7,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoryItemsComponent } from './category-items/category-items.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MobxAngularModule } from 'mobx-angular';
 
 @NgModule({
   declarations: [AppComponent, CategoryItemsComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule,
+    MobxAngularModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

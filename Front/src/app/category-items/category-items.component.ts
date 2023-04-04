@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { category } from '../shopping.service';
+import { category, item } from '../shopping.service';
 
 @Component({
   selector: 'category-items',
@@ -8,4 +8,8 @@ import { category } from '../shopping.service';
 })
 export class CategoryItemsComponent {
   @Input() category: category;
+
+  calculateTotal(items: item[]) {
+    return items.reduce((sum, current) => sum + current.amount, 0);
+  }
 }

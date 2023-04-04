@@ -1,5 +1,5 @@
 <div class="categoryContainer">
-  <p>{{ category.nameHeb }} - {{ category.items.length }} מוצרים</p>
+  <p>{{ category.nameHeb }} - {{ calculateTotal(category.items) }} מוצרים</p>
   <hr />
   <div *ngFor="let item of category.items">
     {{ item.name }} &nbsp;<span *ngIf="item.amount > 1"

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService, category } from './shopping.service';
+import { State } from './state';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit {
   categoriesWithItem: category[] = [];
   newItemName: string = '';
   selectedCategoryId: number = 0;
+  state = new State();
   constructor(private service: ShoppingService) {}
   ngOnInit(): void {
     this.getAllCategories();
@@ -27,7 +29,14 @@ export class AppComponent implements OnInit {
   private getAllItems() {
     this.service.getAllItems().subscribe((r) => {
       this.categoriesWithItem = r;
-      console.log(this.categoriesWithItem);
+      let totalCounter = 0;
+      this.categoriesWithItem.forEach((x) => {
+        x.items.forEach((item) => {
+          totalCounter += item.amount;
+        });
+      });
+
+      this.state.update(totalCounter);
     });
   }
 
