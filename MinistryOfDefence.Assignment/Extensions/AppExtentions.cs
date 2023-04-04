@@ -19,5 +19,17 @@ namespace MinistryOfDefence.Assignment.Extensions
         {
             services.AddScoped<IShoppingService, ShoppingService>();
         }
+
+        public static async Task SeedDefaultData(this IServiceProvider serviceProvider)
+        {
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetService<ShoppingDbContext>();
+                var logger = scope.ServiceProvider.GetService<ILoggerFactory>();
+                if (context is null || logger is null) return;
+
+                await ShoppingDbContextSeeder.SeedDefaultCategoriesAsync(context, logger);
+            }
+        }
     }
 }

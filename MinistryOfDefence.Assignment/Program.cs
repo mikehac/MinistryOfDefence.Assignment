@@ -18,6 +18,7 @@ IMapper mapper = MapperConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
+await app.Services.SeedDefaultData();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
