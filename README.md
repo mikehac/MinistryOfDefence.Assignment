@@ -5,6 +5,6 @@ BackEnd
 FrontEnd
 SQL Server
 
-Here is the [link](http://ec2-54-84-185-24.compute-1.amazonaws.com/api/Shopping:90/).
+Here is the [link](http://ec2-54-84-185-24.compute-1.amazonaws.com:90/).
 
 The FrontEnd is implemented with Angular.
