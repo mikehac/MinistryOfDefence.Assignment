@@ -9,5 +9,5 @@ RUN ng build
 #stage 2
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=node /app/dist/front /usr/share/nginx/html
+COPY --from=node /app/dist/shoping-list.front /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
