@@ -10,11 +10,13 @@ namespace MinistryOfDefence.Assignment.Services
     {
         private readonly IMapper _mapper;
         private readonly ShoppingDbContext _dbContext;
+        private readonly ILogger _logger;
 
-        public ShoppingService(ShoppingDbContext dbContext, IMapper mapper)
+        public ShoppingService(ShoppingDbContext dbContext, IMapper mapper, ILogger<ShoppingService> logger)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<ItemDTO> AddNewItem(ItemDTO itemDTO)
@@ -39,7 +41,7 @@ namespace MinistryOfDefence.Assignment.Services
             }
             catch (Exception ex)
             {
-                //TODO:Logging the exception
+                _logger.LogError(ex, "AddNewItem method failed");
                 return null;
             }
 
@@ -72,13 +74,14 @@ namespace MinistryOfDefence.Assignment.Services
             }
             catch (Exception ex)
             {
-                //TODO:Logging the exception
+                _logger.LogError(ex, "GetItemsAndCategories method failed");
             }
 
             return response;
         }
         public IEnumerable<CategoryDTO> GetCategories()
         {
+            _logger.LogInformation("GetCategories START");
             IEnumerable<CategoryDTO> allCategories = null;
             try
             {
@@ -87,7 +90,7 @@ namespace MinistryOfDefence.Assignment.Services
             }
             catch (Exception ex)
             {
-                //TODO:Logging the exception
+                _logger.LogError(ex, "GetCategories method failed");
             }
 
             return allCategories;
@@ -103,7 +106,7 @@ namespace MinistryOfDefence.Assignment.Services
             }
             catch (Exception ex)
             {
-                //TODO:Logging the exception
+                _logger.LogError(ex, "GetItemsByCategory method failed");
             }
             return allItemsForCategoryId;
         }
