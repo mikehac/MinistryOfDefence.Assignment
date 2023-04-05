@@ -8,13 +8,12 @@ namespace MinistryOfDefence.Assignment.Extensions
     {
         public static void RegisterDb(this IServiceCollection services, IConfiguration config)
         {
-            services.AddDbContext<ShoppingDbContext>(
-            options =>
+            services.AddDbContext<ShoppingDbContext>(options =>
             {
-                options.UseSqlServer(config["ConnectionString:ShoppingDb"]);
+                options.UseSqlServer(config.GetConnectionString("ShoppingDb"));
             });
-
         }
+
         public static void RegisterService(this IServiceCollection services)
         {
             services.AddScoped<IShoppingService, ShoppingService>();

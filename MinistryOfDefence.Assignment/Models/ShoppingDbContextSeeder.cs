@@ -4,11 +4,11 @@
     {
         public static async Task SeedDefaultCategoriesAsync(ShoppingDbContext dbContext, ILoggerFactory loggerFactory)
         {
-            if (dbContext.Categories.Any())
-                return;
-
             try
             {
+                if (dbContext.Categories.Any())
+                    return;
+
                 var categories = new List<Category>
                 {
                     new Category {
